@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
@@ -36,6 +36,7 @@ public class EmployeeController {
         Employee updatedEmployee = employeeService.updateEmployee(employee);
         return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
     }
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Employee> deleteEmployee(@PathVariable("id") Long id){
